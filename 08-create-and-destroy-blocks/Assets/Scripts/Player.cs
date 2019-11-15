@@ -106,7 +106,7 @@ public class Player : MonoBehaviour {
         mouseHorizontal = Input.GetAxis("Mouse X");
         mouseVertical = Input.GetAxis("Mouse Y");
 
-        if (Input.GetButtonDown("Sprint"))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
             isSprinting = true;
         if (Input.GetButtonUp("Sprint"))
             isSprinting = false;
@@ -136,12 +136,14 @@ public class Player : MonoBehaviour {
 
             // Destroy block.
             if (Input.GetMouseButtonDown(0))
+            {
                 world.GetChunkFromVector3(highlightBlock.position).EditVoxel(highlightBlock.position, 0);
-
+            }
             // Place block.
             if (Input.GetMouseButtonDown(1))
+            {
                 world.GetChunkFromVector3(placeBlock.position).EditVoxel(placeBlock.position, selectedBlockIndex);
-
+            }
         }
 
     }
